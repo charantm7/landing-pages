@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  </head>
+  <body>
+    <spline-viewer
+      class="background"
+      url="https://prod.spline.design/AAsmQaodgKmNUL3q/scene.splinecode"
+    ></spline-viewer>
+    <nav class="jersey-10-regular">
+      <div class="left">
+        <img src="logo1.png" alt="..." />
+      </div>
+      <div class="right">
+        <a href="/">Home</a>
+        <a href="#">About</a>
+        <a href="#">Features</a>
+        <a href="#">Login</a>
+      </div>
+    </nav>
+    <main>
+      <div class="landing1" data-aos="fade-up" data-aos-duration="2000">
+        <p style="font-size: 3vw">AI-Powered Cybersecurity Assistant</p>
+        <h3>Enhance Your Digital Security with Intelligent AI Defense</h3>
+        <button>Learn More</button>
+      </div>
+      <div class="landing2">
+        <div class="card left-1" data-aos="fade-up" data-aos-duration="2000">
+          <i class="fa-solid fa-shield-alt"></i>
+          <h3>Real-Time Threat Detection</h3>
+          <ul>
+            <li style="font-size: 15px">
+              AI continuously scans for suspicious activities and alerts you instantly.
+            </li>
+          </ul>
+        </div>
+        <div class="card left-1" data-aos="fade-up" data-aos-duration="2000">
+          <i class="fa-solid fa-search"></i>
+          <h3>Automated Security Audits</h3>
+          <ul>
+            <li style="font-size: 15px">Perform vulnerability assessments and strengthen your defenses.</li>
+          </ul>
+        </div>
+        <div class="card right-1" data-aos="fade-up" data-aos-duration="2000">
+          <i class="fa-solid fa-bolt"></i>
+          <h3>AI-Powered Fast Response</h3>
+          <ul>
+            <li>Get instant recommendations on how to mitigate threats.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="landing3">
+        <div class="card" data-aos="fade-up" data-aos-duration="2000">
+          <i class="fa-solid fa-user-secret"></i>
+          <h3>Phishing & Malware Detection</h3>
+          <ul>
+            <li>Stay protected from harmful links and malicious files.</li>
+          </ul>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-duration="2000">
+          <i class="fa-solid fa-chart-line"></i>
+          <h3>Cybersecurity Insights & Reports</h3>
+          <ul>
+            <li>Understand your security status with detailed analytics.</li>
+          </ul>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-duration="2000">
+          <i class="fa-solid fa-lock"></i>
+          <h3>AI-Powered Intrusion Prevention</h3>
+          <ul>
+            <li>🔒 (Lock) or 🏴‍☠️ (Pirate Flag)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="landing4">
+        <div class="top" data-aos="fade-up" data-aos-duration="2000">
+          <h1>Latest AI Models Released</h1>
+          <p>
+            <b
+              >Stay ahead with cutting-edge AI models designed to enhance cybersecurity and threat
+              detection.</b
+            >
+          </p>
+        </div>
+        <div class="bottom" data-aos="fade-up" data-aos-duration="2000">
+          <div class="left">
+            <div class="l-1">
+              <i class="fa-solid fa-arrow-right"></i>
+              <p>Advanced threat intelligence model that detects zero-day vulnerabilities in real-time.</p>
+            </div>
+
+            <div class="l-2">
+              <i class="fa-solid fa-arrow-right"></i>
+              <p>
+                AI-powered intrusion detection system that analyzes network traffic for suspicious behavior.
+              </p>
+            </div>
+            <div class="l-3">
+              <i class="fa-solid fa-arrow-right"></i>
+              <p>
+                A deep learning model specialized in detecting phishing emails, malicious URLs, and social
+                engineering attacks.
+              </p>
+            </div>
+            <div class="l-4">
+              <i class="fa-solid fa-arrow-right"></i>
+              <p>Uses AI to analyze file behavior and prevent ransomware before it executes.</p>
+            </div>
+            <div class="l-5">
+              <button>Learn More About AI Models <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+          </div>
+          <div class="right">
+            <p>SentinelAI v3.2</p>
+            <p>NeuralGuard X</p>
+            <p>PhishShield Pro</p>
+            <p>MalwareHunter AI</p>
+          </div>
+        </div>
+      </div>
+      <div class="landing5" data-aos="fade-up" data-aos-duration="2000">
+        <div class="tabs" data-aos="fade-up" data-aos-duration="2000">
+          <div class="tab active" onclick="switchTab(event, 'sentinel')">🛡️ SentinelAI</div>
+          <div class="tab" onclick="switchTab(event, 'neuralguard')">🤖 NeuralGuard X</div>
+          <div class="tab" onclick="switchTab(event, 'phishshield')">🔍 PhishShield Pro</div>
+          <div class="tab" onclick="switchTab(event, 'malwarehunter')">⚡ MalwareHunter AI</div>
+        </div>
+        <div id="sentinel" class="content active">
+          <h3>🛡️ SentinelAI v3.2</h3>
+          <p>
+            SentinelAI v3.2 is an advanced AI-powered threat intelligence system that continuously monitors
+            network traffic, detects vulnerabilities, and provides real-time alerts to prevent cyberattacks
+            before they happen. .
+          </p>
+          <h4>Use Cases:</h4>
+          <ul>
+            <li>Enterprises securing their network infrastructure</li>
+            <li>DevOps teams monitoring API security</li>
+            <li>Organizations requiring 24/7 cybersecurity surveillance</li>
+          </ul>
+        </div>
+
+        <div id="neuralguard" class="content">
+          <h3>🤖 NeuralGuard X</h3>
+          <p>
+            MalwareHunter AI is an AI-based malware analysis tool that detects, classifies, and eliminates
+            malicious files before they can harm your system. It focuses on ransomware, trojans, and spyware.
+          </p>
+          <h4>Use Cases:</h4>
+          <ul>
+            <li>Antivirus companies improving malware detection rates</li>
+            <li>Cybersecurity teams protecting enterprise endpoints</li>
+            <li>Developers securing software against supply chain attacks</li>
+          </ul>
+        </div>
+
+        <div id="phishshield" class="content">
+          <h3>🔍 PhishShield Pro</h3>
+          <p>
+            PhishShield Pro is an AI-driven phishing detection system that scans emails, links, and messages
+            to identify fraudulent activities, keeping users safe from scams and credential theft.
+          </p>
+          <h4>Use Cases:</h4>
+          <ul>
+            <li>Companies protecting employees from phishing attacks</li>
+            <li>Email service providers enhancing spam filtering</li>
+            <li>Individuals securing personal data from fraude</li>
+          </ul>
+        </div>
+
+        <div id="malwarehunter" class="content">
+          <h3>⚡ MalwareHunter AI</h3>
+          <p>
+            MalwareHunter AI is an AI-based malware analysis tool that detects, classifies, and eliminates
+            malicious files before they can harm your system. It focuses on ransomware, trojans, and spyware.
+          </p>
+          <h4>Use Cases:</h4>
+          <ul>
+            <li>Antivirus companies improving malware detection rates</li>
+            <li>Cybersecurity teams protecting enterprise endpoints</li>
+            <li>Developers securing software against supply chain attacks</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer-1">
+          <div class="left">
+            <img src="logo1.png" alt="" />
+
+            <h3>AI Cybersecurity Assistant</h3>
+            <p>Empowering digital security with AI-driven threat detection and automated defense.</p>
+            <p>© 2025 AI Cybersecurity Assistant. All rights reserved.</p>
+
+            <div class="logos">
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#"><i class="fa-brands fa-github"></i></a>
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+          </div>
+          <div class="right">
+            <div class="links">
+              <h4>Quick Links</h4>
+              <a href="#">Home</a>
+              <a href="#">About</a>
+              <a href="#">FAQ</a>
+              <a href="#">Features</a>
+            </div>
+            <div class="services">
+              <h4>Services</h4>
+              <a href="#">Threat Detection</a>
+              <a href="#">Security Audits</a>
+              <a href="#">Fast Response</a>
+              <a href="#">Threat Reports</a>
+            </div>
+            <div class="Legal">
+              <h4>Legal</h4>
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init({
+        once: true,
+      });
+    </script>
+    <script>
+      function switchTab(event, tabId) {
+        let tabs = document.querySelectorAll(".tab");
+        let contents = document.querySelectorAll(".content");
+
+        tabs.forEach((tab) => tab.classList.remove("active"));
+        contents.forEach((content) => content.classList.remove("active"));
+
+        event.currentTarget.classList.add("active");
+        document.getElementById(tabId).classList.add("active");
+      }
+    </script>
+  </body>
+</html>
