@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Jersey+10&family=Oxanium:wght@200..800&family=Quicksand:wght@300..700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -7,6 +8,22 @@
   font-family: "Jersey 10", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.quicksand {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.comfort-zone {
+  font-family: "Comfortaa", sans-serif;
 }
 
 html ::-webkit-scrollbar {
@@ -59,6 +76,7 @@ body nav .right a {
   color: rgb(26, 26, 26);
   position: relative;
   font-size: 2vw;
+  transition: transform 0.2s ease-in-out;
 }
 body nav .right a:after {
   content: "";
@@ -73,6 +91,9 @@ body nav .right a:after {
 body nav .right a:hover:after {
   width: 100%;
   color: black;
+}
+body nav .right a:hover {
+  transform: translateY(-5px);
 }
 body main {
   background-color: #e3e3e3;
@@ -89,10 +110,10 @@ body main .landing1 {
   flex-direction: column;
   gap: 1rem;
   padding: 80px 0 0 0;
+  font-family: "Comfortaa", sans-serif;
 }
 body main .landing1 button {
   width: 130px;
-  height: 35px;
   border-radius: 20px;
   margin-top: 20px;
   background-color: black;
@@ -100,6 +121,7 @@ body main .landing1 button {
   cursor: pointer;
   border: none;
   transition: transform 0.2s ease-in;
+  padding: 0.7rem;
 }
 body main .landing1 button:hover {
   transform: scale(1.1);
@@ -113,6 +135,7 @@ body main .landing2 {
   gap: 3rem;
   height: 300px;
   align-items: center;
+  font-family: "Comfortaa", sans-serif;
 }
 body main .landing2 .card {
   padding: 2rem;
@@ -126,6 +149,9 @@ body main .landing2 .card {
   display: flex;
   gap: 1rem;
   flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  border: 0.1px solid rgba(0, 0, 0, 0.465);
+  cursor: pointer;
 }
 body main .landing2 .card i {
   background-color: black;
@@ -138,7 +164,7 @@ body main .landing2 .card h5 {
   margin-top: 10px;
 }
 body main .landing2 .card:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 body main .landing3 {
   width: 100%;
@@ -148,6 +174,7 @@ body main .landing3 {
   gap: 3rem;
   height: 300px;
   align-items: first baseline;
+  font-family: "Comfortaa", sans-serif;
 }
 body main .landing3 .card {
   padding: 2rem;
@@ -161,6 +188,9 @@ body main .landing3 .card {
   display: flex;
   gap: 1rem;
   flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  border: 0.1px solid rgba(0, 0, 0, 0.465);
+  cursor: pointer;
 }
 body main .landing3 .card i {
   background-color: black;
@@ -170,11 +200,11 @@ body main .landing3 .card i {
   width: 6%;
 }
 body main .landing3 .card:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 body main .landing4 {
   width: 100%;
-  height: 500px;
+  height: 650px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -183,7 +213,7 @@ body main .landing4 {
 body main .landing4 .top {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.3rem;
   margin-left: 14%;
 }
 body main .landing4 .bottom {
@@ -200,7 +230,7 @@ body main .landing4 .bottom .left {
 body main .landing4 .bottom .left i {
   background-color: black;
   color: white;
-  padding: 5px;
+  padding: 10px;
   border-radius: 50%;
 }
 body main .landing4 .bottom .left [class^=l-] {
@@ -208,22 +238,44 @@ body main .landing4 .bottom .left [class^=l-] {
   align-items: center;
   gap: 1rem;
 }
+body main .landing4 .bottom .left [class^=l-] p {
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.6px;
+}
 body main .landing4 .bottom .left .l-5 button {
-  padding: 1rem;
+  padding: 0.6rem 1rem;
   background-color: black;
   color: white;
   border-radius: 10px;
   transition: transform 0.2s ease-in;
+  font-size: medium;
+  align-items: center;
+  cursor: pointer;
+}
+body main .landing4 .bottom .left .l-5 button i {
+  display: inline-block;
+  animation: moveArrow 1.5s infinite alternate ease-in-out;
+  font-size: 20px;
+}
+@keyframes moveArrow {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
 }
 body main .landing4 .bottom .left .l-5 button:hover {
-  transform: translateX(5px);
+  transform: translateX(10px);
 }
 body main .landing4 .bottom .right {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
   margin-left: 8%;
   margin-top: 20px;
+  cursor: pointer;
 }
 body main .landing4 .bottom .right p {
   background-color: black;
@@ -277,7 +329,7 @@ body main .landing5 .content.active {
   display: flex;
 }
 body main .footer {
-  height: 300px;
+  height: 330px;
   position: absolute;
   background-color: #e3e3e3;
   width: 95%;
@@ -313,7 +365,7 @@ body main .footer .footer-1 .left .logos i {
   cursor: pointer;
   font-size: 20px;
   transition: transform 0.2s ease-in;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 body main .footer .footer-1 .left .logos i:hover {
   transform: translateY(-7px);
