@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADA LAB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f0f0f0;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background: #eee;
+        align-items: center;
+      }
+      .right i {
+        font-size: 20px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+      #light {
+        display: none;
+      }
+      body.dark-mode {
+        background-color: #121212;
+        color: #fff;
+      }
+      body.dark-mode #dark {
+        display: none;
+      }
+      body.dark-mode #light {
+        display: inline;
+      }
+      body.dark-mode nav {
+        background-color: #121212;
+      }
+      body.dark-mode pre {
+        background-color: #dcdcdc0d;
+      }
+      .card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 16px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .card.dark-mode {
+        background: #1e1e1e;
+        color: #dcdcdc;
+      }
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .top button {
+        background: #444;
+        color: #fff;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .top button:hover {
+        background: #666;
+      }
+      pre {
+        background: #1e1e1e;
+        color: #dcdcdc;
+        padding: 16px;
+        border-radius: 10px;
+        white-space: pre;
+        overflow-x: auto;
+        font-family: "Courier New", monospace;
+      }
+      @media (max-width: 768px) {
+        body {
+          padding: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="left"><p>ADA LAB Programs</p></div>
+      <div class="right">
+        <i class="fa-solid fa-moon" id="dark"></i>
+        <i class="fa-solid fa-lightbulb" id="light"></i>
+      </div>
+    </nav>
+
+    <main id="programs"></main>
+
+    <script>
+      const programs = [
+        {
+          title: "1. Kruskal's Algorithm",
+          code: `#include <stdio.h>\r\n\r\nvoid main() {\r\n    int cost[10][10];\r\n    int parent[10];\r\n    int i, j, n, ne = 1;\r\n    int a = 0, b = 0, u = 0, v = 0;\r\n    int min, mincost = 0;\r\n\r\n    printf(\"Enter the Number of Nodes: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    printf(\"Enter the Cost Matrix:\\n\");\r\n    for (i = 1; i <= n; i++) {\r\n        for (j = 1; j <= n; j++) {\r\n            scanf(\"%d\", &cost[i][j]);\r\n            if (cost[i][j] == 0)\r\n                cost[i][j] = 999;\r\n        }\r\n    }\r\n\r\n    for (i = 1; i <= n; i++)\r\n        parent[i] = 0;\r\n\r\n    printf(\"\\n\\tKruskal\'s Algorithm\\n\");\r\n    printf(\"\\n\\tThe Edges of Minimum Spanning Tree are:\\n\");\r\n\r\n    while (ne < n) {\r\n        min = 999;\r\n        for (i = 1; i <= n; i++) {\r\n            for (j = 1; j <= n; j++) {\r\n                if (cost[i][j] < min) {\r\n                    min = cost[i][j];\r\n                    a = u = i;\r\n                    b = v = j;\r\n                }\r\n            }\r\n        }\r\n\r\n        while (parent[u] != 0)\r\n            u = parent[u];\r\n        while (parent[v] != 0)\r\n            v = parent[v];\r\n\r\n        if (u != v) {\r\n            printf(\" %d Edge [%d , %d] = %d\\n\", ne++, a, b, min);\r\n            mincost += min;\r\n            parent[v] = u;\r\n        }\r\n\r\n        cost[a][b] = cost[b][a] = 999;\r\n    }\r\n\r\n    printf(\"\\n\\tMinimum Cost = %d\\n\", mincost);\r\n}`,
+        },
+        {
+          title: "2. Prim's Algorithm",
+          code: `#include <stdio.h>\r\n\r\nvoid main() {\r\n    int cost[10][10];\r\n    int visited[10];\r\n    int i, j, n, ne = 1, a = 0, b = 0, u = 0, v = 0;\r\n    int min, mincost = 0;\r\n\r\n    printf(\"Enter the number of Nodes: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    printf(\"Enter the Cost Matrix:\\n\");\r\n    for (i = 1; i <= n; i++) {\r\n        for (j = 1; j <= n; j++) {\r\n            scanf(\"%d\", &cost[i][j]);\r\n            if (cost[i][j] == 0)\r\n                cost[i][j] = 999;\r\n        }\r\n    }\r\n\r\n    for (i = 1; i <= n; i++)\r\n        visited[i] = 0;\r\n\r\n    printf(\"\\n\\tPrim\'s Algorithm\\n\");\r\n    printf(\"\\n\\tThe Edges of Spanning Tree are:\\n\");\r\n\r\n    visited[1] = 1;\r\n\r\n    while (ne < n) {\r\n        min = 999;\r\n        for (i = 1; i <= n; i++) {\r\n            for (j = 1; j <= n; j++) {\r\n                if (visited[i] == 1 && visited[j] == 0 && cost[i][j] < min) {\r\n                    min = cost[i][j];\r\n                    a = i;\r\n                    b = j;\r\n                }\r\n            }\r\n        }\r\n\r\n        if (visited[b] == 0) {\r\n            printf(\"\\t%d Edge [%d , %d] = %d\\n\", ne, a, b, min);\r\n            visited[b] = 1;\r\n            mincost += min;\r\n            ne++;\r\n        }\r\n\r\n        cost[a][b] = cost[b][a] = 999;\r\n    }\r\n\r\n    printf(\"\\n\\tMinimum Cost = %d\\n\", mincost);\r\n}`,
+        },
+        {
+          title: "3 A. Floyd's",
+          code: `#include <stdio.h>\r\n#define INF 999\r\n\r\nint min(int a, int b) {\r\n    return (a < b) ? a : b;\r\n}\r\n\r\nvoid floyd(int p[][10], int n) {\r\n    int i, j, k;\r\n    for (k = 1; k <= n; k++) {\r\n        for (i = 1; i <= n; i++) {\r\n            for (j = 1; j <= n; j++) {\r\n                p[i][j] = min(p[i][j], p[i][k] + p[k][j]);\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\nint main() {\r\n    int a[10][10], n, i, j;\r\n\r\n    printf(\"\\nEnter the number of vertices: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    printf(\"\\nEnter the graph data (999 for no edge, 0 for self-loop):\\n\");\r\n    for (i = 1; i <= n; i++) {\r\n        for (j = 1; j <= n; j++) {\r\n            scanf(\"%d\", &a[i][j]);\r\n        }\r\n    }\r\n\r\n    floyd(a, n);\r\n\r\n    printf(\"\\nShortest Path Matrix:\\n\");\r\n    for (i = 1; i <= n; i++) {\r\n        for (j = 1; j <= n; j++) {\r\n            if (a[i][j] == INF)\r\n                printf(\"INF\\t\");\r\n            else\r\n                printf(\"%d\\t\", a[i][j]);\r\n        }\r\n        printf(\"\\n\");\r\n    }\r\n\r\n    return 0;\r\n}`,
+        },
+        {
+          title: "3 B. Warshall's",
+          code: `#include <stdio.h>\r\n\r\nvoid warsh(int p[][10], int n) {\r\n    int i, j, k;\r\n    for (k = 1; k <= n; k++) {\r\n        for (i = 1; i <= n; i++) {\r\n            for (j = 1; j <= n; j++) {\r\n                p[i][j] = p[i][j] || (p[i][k] && p[k][j]);\r\n            }\r\n        }\r\n    }\r\n}\r\n\r\nint main() {\r\n    int a[10][10], n, i, j;\r\n\r\n    printf(\"\\nEnter the number of vertices: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    printf(\"\\nEnter the adjacency matrix (0 for no edge, 1 for edge):\\n\");\r\n    for (i = 1; i <= n; i++) {\r\n        for (j = 1; j <= n; j++) {\r\n            scanf(\"%d\", &a[i][j]);\r\n        }\r\n    }\r\n\r\n    warsh(a, n);\r\n\r\n    printf(\"\\nResultant Path Matrix (Transitive Closure):\\n\");\r\n    for (i = 1; i <= n; i++) {\r\n        for (j = 1; j <= n; j++) {\r\n            printf(\"%d \", a[i][j]);\r\n        }\r\n        printf(\"\\n\");\r\n    }\r\n\r\n    return 0;\r\n}`,
+        },
+        {
+          title: "4. Dijkstra's Algorithm",
+          code: `#include <stdio.h>\r\n\r\nint main(void) {\r\n    int n, cost[15][15], i, j, s[15], v, u = 0, w, dist[15], num, min;\r\n\r\n    printf(\"Enter the number of vertices: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    printf(\"Enter the cost adjacency matrix (999 for no edge or self-loop):\\n\");\r\n    for (i = 1; i <= n; i++) {\r\n        for (j = 1; j <= n; j++) {\r\n            scanf(\"%d\", &cost[i][j]);\r\n        }\r\n    }\r\n\r\n    printf(\"Enter the source vertex: \");\r\n    scanf(\"%d\", &v);\r\n\r\n    for (i = 1; i <= n; i++) {\r\n        s[i] = 0;\r\n        dist[i] = cost[v][i];\r\n    }\r\n\r\n    s[v] = 1;\r\n    dist[v] = 0;\r\n\r\n    for (num = 2; num <= n; num++) {\r\n        min = 999;\r\n        for (w = 1; w <= n; w++) {\r\n            if (!s[w] && dist[w] < min) {\r\n                min = dist[w];\r\n                u = w;\r\n            }\r\n        }\r\n\r\n        s[u] = 1;\r\n\r\n        for (w = 1; w <= n; w++) {\r\n            if (!s[w] && dist[w] > dist[u] + cost[u][w]) {\r\n                dist[w] = dist[u] + cost[u][w];\r\n            }\r\n        }\r\n    }\r\n\r\n    printf(\"\\nVERTEX\\tDESTINATION\\tCOST\\n\");\r\n    for (i = 1; i <= n; i++) {\r\n        printf(\"  %d\\t    %d\\t\\t  %d\\n\", v, i, dist[i]);\r\n    }\r\n\r\n    return 0;\r\n}`,
+        },
+        {
+          title: "5. Topological",
+          code: `#include <stdio.h>\r\n\r\nint temp[10], k = 0;\r\n\r\nvoid sort(int a[][10], int id[], int n) {\r\n    int i, j;\r\n    for (i = 1; i <= n; i++) {\r\n        if (id[i] == 0) {\r\n            id[i] = -1;  \/\/ mark as visited\r\n            temp[++k] = i;\r\n            for (j = 1; j <= n; j++) {\r\n                if (a[i][j] == 1 && id[j] != -1) {\r\n                    id[j]--;\r\n                }\r\n            }\r\n            i = 0;  \/\/ restart scanning from beginning\r\n        }\r\n    }\r\n}\r\n\r\nint main() {\r\n    int a[10][10], id[10], n, i, j;\r\n\r\n    printf(\"Enter the number of vertices: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    for (i = 1; i <= n; i++)\r\n        id[i] = 0;\r\n\r\n    printf(\"Enter the adjacency matrix (1 if edge exists, else 0):\\n\");\r\n    for (i = 1; i <= n; i++) {\r\n        for (j = 1; j <= n; j++) {\r\n            scanf(\"%d\", &a[i][j]);\r\n            if (a[i][j] == 1)\r\n                id[j]++;\r\n        }\r\n    }\r\n\r\n    sort(a, id, n);\r\n\r\n    if (k != n) {\r\n        printf(\"Topological ordering not possible (Graph has a cycle).\\n\");\r\n    } else {\r\n        printf(\"Topological ordering is: \");\r\n        for (i = 1; i <= k; i++)\r\n            printf(\"%d \", temp[i]);\r\n        printf(\"\\n\");\r\n    }\r\n\r\n    return 0;\r\n}`,
+        },
+        {
+          title: "6. Dynamic Programs",
+          code: `#include <stdio.h>\r\n\r\nint v[20][20];\r\n\r\nint max1(int a, int b) {\r\n    return (a > b) ? a : b;\r\n}\r\n\r\nint main() {\r\n    int i, j, p[20], w[20], n, max;\r\n\r\n    printf(\"\\nEnter the number of items: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    for (i = 1; i <= n; i++) {\r\n        printf(\"Enter the weight and profit of item %d: \", i);\r\n        scanf(\"%d %d\", &w[i], &p[i]);\r\n    }\r\n\r\n    printf(\"\\nEnter the capacity of the knapsack: \");\r\n    scanf(\"%d\", &max);\r\n\r\n   \r\n    for (i = 0; i <= n; i++)\r\n        v[i][0] = 0;\r\n    for (j = 0; j <= max; j++)\r\n        v[0][j] = 0;\r\n\r\n    for (i = 1; i <= n; i++) {\r\n        for (j = 1; j <= max; j++) {\r\n            if (w[i] > j)\r\n                v[i][j] = v[i - 1][j];\r\n            else\r\n                v[i][j] = max1(v[i - 1][j], v[i - 1][j - w[i]] + p[i]);\r\n        }\r\n    }\r\n\r\n \r\n    printf(\"\\nThe DP table is:\\n\");\r\n    for (i = 0; i <= n; i++) {\r\n        for (j = 0; j <= max; j++)\r\n            printf(\"%d\\t\", v[i][j]);\r\n        printf(\"\\n\");\r\n    }\r\n\r\n    printf(\"\\nThe maximum profit is: %d\\n\", v[n][max]);\r\n\r\n    printf(\"The most valuable subset is: {\");\r\n    j = max;\r\n    for (i = n; i >= 1; i--) {\r\n        if (v[i][j] != v[i - 1][j]) {\r\n            printf(\" item%d\", i);\r\n            j -= w[i];\r\n        }\r\n    }\r\n    printf(\" }\\n\");\r\n\r\n    return 0;\r\n}`,
+        },
+        {
+          title: "7. Greedy program",
+          code: `#include <stdio.h>\r\n#define MAX 50\r\n\r\nint p[MAX], w[MAX];\r\ndouble x[MAX], maxprofit;\r\nint n, m, i;\r\n\r\nvoid greedyKnapsack(int n, int w[], int p[], int m) {\r\n    double ratio[MAX];\r\n\r\n    for (i = 0; i < n; i++) {\r\n        ratio[i] = (double)p[i] \/ w[i];\r\n    }\r\n\r\n    \/\/ Sort items by decreasing ratio of profit\/weight\r\n    for (i = 0; i < n - 1; i++) {\r\n        for (int j = i + 1; j < n; j++) {\r\n            if (ratio[i] < ratio[j]) {\r\n                double temp = ratio[i];\r\n                ratio[i] = ratio[j];\r\n                ratio[j] = temp;\r\n\r\n                int tempW = w[i];\r\n                w[i] = w[j];\r\n                w[j] = tempW;\r\n\r\n                int tempP = p[i];\r\n                p[i] = p[j];\r\n                p[j] = tempP;\r\n            }\r\n        }\r\n    }\r\n\r\n    int currentWeight = 0;\r\n    maxprofit = 0.0;\r\n\r\n    for (i = 0; i < n; i++) {\r\n        if (currentWeight + w[i] <= m) {\r\n            x[i] = 1.0;\r\n            currentWeight += w[i];\r\n            maxprofit += p[i];\r\n        } else {\r\n            x[i] = (double)(m - currentWeight) \/ w[i];\r\n            maxprofit += x[i] * p[i];\r\n            break;\r\n        }\r\n    }\r\n\r\n    printf(\"Optimal solution for greedy method: %.2f\\n\", maxprofit);\r\n    printf(\"Solution vector (fraction taken of each item):\\n\");\r\n    for (i = 0; i < n; i++) {\r\n        printf(\"Item %d: %.2f\\n\", i + 1, x[i]);\r\n    }\r\n}\r\n\r\nint main() {\r\n    printf(\"Enter the number of objects: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    printf(\"Enter the weights of the objects:\\n\");\r\n    for (i = 0; i < n; i++)\r\n        scanf(\"%d\", &w[i]);\r\n\r\n    printf(\"Enter the profits of the objects:\\n\");\r\n    for (i = 0; i < n; i++)\r\n        scanf(\"%d\", &p[i]);\r\n\r\n    printf(\"Enter the maximum capacity: \");\r\n    scanf(\"%d\", &m);\r\n\r\n    greedyKnapsack(n, w, p, m);\r\n\r\n    return 0;\r\n}`,
+        },
+        {
+          title: "8. Subset Program",
+          code: `#include <stdio.h>\r\n\r\nint s[10], d, n, set[10], count = 0;\r\nint flag = 0;\r\n\r\nvoid display(int count) {\r\n    int i;\r\n    printf(\"{ \");\r\n    for (i = 0; i < count; i++)\r\n        printf(\"%d \", set[i]);\r\n    printf(\"}\\n\");\r\n}\r\n\r\nvoid subset(int sum, int i) {\r\n    if (sum == d) {\r\n        flag = 1;\r\n        display(count);\r\n        return;\r\n    }\r\n    if (sum > d || i >= n)\r\n        return;\r\n\r\n    \/\/ Include the current element\r\n    set[count++] = s[i];\r\n    subset(sum + s[i], i + 1);\r\n    count--;\r\n\r\n    \/\/ Exclude the current element\r\n    subset(sum, i + 1);\r\n}\r\n\r\nint main() {\r\n    int i;\r\n    printf(\"Enter the number of elements in the set: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    printf(\"Enter the set values:\\n\");\r\n    for (i = 0; i < n; ++i)\r\n        scanf(\"%d\", &s[i]);\r\n\r\n    printf(\"Enter the target sum: \");\r\n    scanf(\"%d\", &d);\r\n\r\n    printf(\"\\nThe subsets that sum to %d are:\\n\", d);\r\n    subset(0, 0);\r\n\r\n    if (flag == 0)\r\n        printf(\"There is no solution.\\n\");\r\n\r\n    return 0;\r\n}`,
+        },
+        {
+          title: "9. Selection sort",
+          code: `#include <stdio.h>\r\n#include <time.h>\r\n#include <stdlib.h>\r\n\r\nvoid selsort(int a[], int n) {\r\n    int i, j, small, pos, temp;\r\n    for (j = 0; j < n - 1; j++) {\r\n        small = a[j];\r\n        pos = j;\r\n        for (i = j + 1; i < n; i++) {\r\n            if (a[i] < small) {\r\n                small = a[i];\r\n                pos = i;\r\n            }\r\n        }\r\n        temp = a[j];\r\n        a[j] = small;\r\n        a[pos] = temp;\r\n    }\r\n}\r\n\r\nint main() {\r\n    int a[100], i, n;\r\n    clock_t start, finish;\r\n    double seconds;\r\n    long counter = 0;\r\n\r\n    printf(\"Enter the n value (<=100): \");\r\n    scanf(\"%d\", &n);\r\n\r\n    \/\/ Generate random elements and display them\r\n    for (i = 0; i < n; i++) {\r\n        a[i] = rand() % 1000; \/\/ random number between 0-999\r\n        printf(\"%d\\t\", a[i]);\r\n    }\r\n    printf(\"\\n\");\r\n\r\n    start = clock();\r\n    do {\r\n        selsort(a, n);\r\n        counter++;\r\n        finish = clock();\r\n    } while ((finish - start) < CLOCKS_PER_SEC \/ 10); \/\/ run for at least 0.1 seconds\r\n\r\n    seconds = (double)(finish - start) \/ CLOCKS_PER_SEC;\r\n\r\n    printf(\"The sorted elements:\\n\");\r\n    for (i = 0; i < n; i++)\r\n        printf(\"%d\\t\", a[i]);\r\n    printf(\"\\n\");\r\n\r\n    printf(\"Total execution time: %.6f seconds\\n\", seconds);\r\n    printf(\"Number of sorts performed: %ld\\n\", counter);\r\n    printf(\"Average time per sort: %.9f seconds\\n\", seconds \/ counter);\r\n\r\n    return 0;\r\n}`,
+        },
+        {
+          title: "10. quick sort",
+          code: `#include <stdio.h>\r\n#include <stdlib.h>\r\n#include <time.h>\r\n\r\n#define MAX 10000\r\n\r\nvoid exch(int *p, int *q) {\r\n    int temp = *p;\r\n    *p = *q;\r\n    *q = temp;\r\n}\r\n\r\nvoid quicksort(int a[], int low, int high) {\r\n    int i, j, pivot;\r\n\r\n    if (low >= high)\r\n        return;\r\n\r\n    pivot = low;\r\n    i = low + 1;\r\n    j = high;\r\n\r\n    while (i <= j) {\r\n        while (i <= high && a[i] <= a[pivot]) i++;\r\n        while (a[j] > a[pivot]) j--;\r\n        if (i < j)\r\n            exch(&a[i], &a[j]);\r\n    }\r\n\r\n    exch(&a[j], &a[pivot]);\r\n\r\n    quicksort(a, low, j - 1);\r\n    quicksort(a, j + 1, high);\r\n}\r\n\r\nint main() {\r\n    int n, i;\r\n    int a[MAX];\r\n    long counter = 0;\r\n    double seconds;\r\n    clock_t start, finish;\r\n\r\n    printf(\"\\nEnter the number of elements to be sorted: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    \/\/ Generate random numbers\r\n    for (i = 0; i < n; i++) {\r\n        a[i] = rand() % 1000;\r\n        printf(\"%d\\t\", a[i]);\r\n    }\r\n\r\n    printf(\"\\n\");\r\n\r\n    start = clock();\r\n    do {\r\n        quicksort(a, 0, n - 1);\r\n        counter++;\r\n        finish = clock();\r\n    } while ((finish - start) < CLOCKS_PER_SEC \/ 10); \/\/ ~0.1s\r\n\r\n    seconds = (double)(finish - start) \/ CLOCKS_PER_SEC;\r\n\r\n    printf(\"\\nThe sorted elements:\\n\");\r\n    for (i = 0; i < n; i++)\r\n        printf(\"%d\\t\", a[i]);\r\n    printf(\"\\n\");\r\n\r\n    printf(\"Total execution time: %.6f seconds\\n\", seconds);\r\n    printf(\"Number of sorts performed: %ld\\n\", counter);\r\n    printf(\"Average time per sort: %.9f seconds\\n\", seconds \/ counter);\r\n\r\n    return 0;\r\n}`,
+        },
+        {
+          title: "11. Merge Sort",
+          code: `#include <stdio.h>\r\n#include <stdlib.h>\r\n#include <time.h>\r\n\r\n#define MAX 10000\r\n\r\nvoid merge(int array[], int low, int mid, int high) {\r\n    int i = low, j = mid + 1, k = low;\r\n    int c[MAX];\r\n\r\n    while (i <= mid && j <= high) {\r\n        if (array[i] <= array[j])\r\n            c[k++] = array[i++];\r\n        else\r\n            c[k++] = array[j++];\r\n    }\r\n\r\n    while (i <= mid)\r\n        c[k++] = array[i++];\r\n    while (j <= high)\r\n        c[k++] = array[j++];\r\n\r\n    for (i = low; i < k; i++)\r\n        array[i] = c[i];\r\n}\r\n\r\nvoid merge_sort(int array[], int low, int high) {\r\n    if (low < high) {\r\n        int mid = (low + high) \/ 2;\r\n        merge_sort(array, low, mid);\r\n        merge_sort(array, mid + 1, high);\r\n        merge(array, low, mid, high);\r\n    }\r\n}\r\n\r\nint main() {\r\n    int n, i;\r\n    int array[MAX];\r\n    clock_t start, finish;\r\n    double seconds;\r\n    long counter = 0;\r\n\r\n    printf(\"Enter the size of the array: \");\r\n    scanf(\"%d\", &n);\r\n\r\n    \/\/ Generate random values\r\n    for (i = 0; i < n; i++) {\r\n        array[i] = rand() % 1000;\r\n        printf(\"%d\\t\", array[i]);\r\n    }\r\n    printf(\"\\n\");\r\n\r\n    start = clock();\r\n    do {\r\n        merge_sort(array, 0, n - 1);\r\n        counter++;\r\n        finish = clock();\r\n    } while ((finish - start) < CLOCKS_PER_SEC \/ 10); \/\/ ~0.1s\r\n\r\n    seconds = (double)(finish - start) \/ CLOCKS_PER_SEC;\r\n\r\n    printf(\"\\nThe sorted elements:\\n\");\r\n    for (i = 0; i < n; i++)\r\n        printf(\"%d\\t\", array[i]);\r\n    printf(\"\\n\");\r\n\r\n    printf(\"Total execution time: %.6f seconds\\n\", seconds);\r\n    printf(\"Number of sorts performed: %ld\\n\", counter);\r\n    printf(\"Average time per sort: %.9f seconds\\n\", seconds \/ counter);\r\n\r\n    return 0;\r\n}`,
+        },
+        {
+          title: "12. N Queens",
+          code: `#include <stdio.h>\r\n#include <math.h>\r\n#include <stdlib.h>\r\n\r\nint a[30], count = 0;\r\n\r\nint place(int pos) {\r\n    int i;\r\n    for (i = 1; i < pos; i++) {\r\n        if ((a[i] == a[pos]) || (abs(a[i] - a[pos]) == abs(i - pos)))\r\n            return 0;\r\n    }\r\n    return 1;\r\n}\r\n\r\nvoid print_sol(int n) {\r\n    int i, j;\r\n    count++;\r\n    printf(\"\\n\\nSolution #%d:\\n\", count);\r\n    for (i = 1; i <= n; i++) {\r\n        for (j = 1; j <= n; j++) {\r\n            if (a[i] == j)\r\n                printf(\"Q\\t\");\r\n            else\r\n                printf(\"*\\t\");\r\n        }\r\n        printf(\"\\n\");\r\n    }\r\n}\r\n\r\nvoid queen(int n) {\r\n    int k = 1;\r\n    a[k] = 0;\r\n    while (k != 0) {\r\n        a[k] = a[k] + 1;\r\n        while ((a[k] <= n) && !place(k))\r\n            a[k]++;\r\n        if (a[k] <= n) {\r\n            if (k == n)\r\n                print_sol(n);\r\n            else {\r\n                k++;\r\n                a[k] = 0;\r\n            }\r\n        } else {\r\n            k--;\r\n        }\r\n    }\r\n}\r\n\r\nint main() {\r\n    int n;\r\n    printf(\"Enter the number of Queens: \");\r\n    scanf(\"%d\", &n);\r\n    queen(n);\r\n    printf(\"\\nTotal solutions = %d\\n\", count);\r\n    return 0;\r\n}`,
+        },
+      ];
+      const container = document.getElementById("programs");
+
+      programs.forEach((prog, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+        <div class="top">
+          <p>${prog.title}</p>
+          <button onclick="copyCode(${index})">Copy</button>
+        </div>
+        <pre id="code-${index}">${prog.code}</pre>
+      `;
+        container.appendChild(card);
+      });
+
+      function copyCode(index) {
+        const code = document.getElementById(`code-${index}`).innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          alert("Copied to clipboard!");
+        });
+      }
+
+      const toggledark = document.getElementById("dark");
+      const togglelight = document.getElementById("light");
+      toggledark.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        document.querySelectorAll(".card").forEach((card) => card.classList.toggle("dark-mode"));
+      });
+      togglelight.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        document.querySelectorAll(".card").forEach((card) => card.classList.toggle("dark-mode"));
+      });
+    </script>
+  </body>
+</html>
